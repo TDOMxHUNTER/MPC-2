@@ -1,0 +1,213 @@
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html, body {
+  background: #000000 !important;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#__next {
+  background: #000000 !important;
+  min-height: 100vh;
+  height: 100%;
+}
+
+body {
+  background: #000000;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+/* Responsive adjustments for layout */
+@media (max-width: 768px) {
+  .search-leaderboard-container {
+    position: fixed !important;
+    top: 15px !important;
+    left: 15px !important;
+    z-index: 1000 !important;
+  }
+
+  .monad-heading {
+    font-size: 2.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .monad-logo {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .floating-monad {
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .monad-heading {
+    font-size: 2rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .monad-logo {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .floating-monad {
+    margin-bottom: 1.25rem !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .monad-heading {
+    font-size: 1.75rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .monad-logo {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  .floating-monad {
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* Big Background Monad Logo */
+body::before {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vmin;
+  height: 80vmin;
+  background-image: url('https://docs.monad.xyz/img/monad_logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.08;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Floating Monad Logo */
+.floating-monad {
+  position: relative;
+  margin-bottom: 2rem;
+  z-index: 50;
+  pointer-events: none;
+  animation: float 6s ease-in-out infinite, glow 4s ease-in-out infinite alternate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.monad-logo {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.monad-logo:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Main Heading Styles */
+.monad-heading {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease-in-out infinite;
+  text-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-8px) rotate(-1deg);
+  }
+}
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.3));
+  }
+  100% {
+    filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.7)) drop-shadow(0 0 30px rgba(118, 75, 162, 0.4));
+  }
+}
